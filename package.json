@@ -11,6 +11,7 @@
     "@codemirror/basic-setup": "^0.19.1",
     "@codemirror/lang-javascript": "^0.19.3",
     "@codemirror/language": "^0.19.7",
+    "@codemirror/text": "^0.19.5",
     "@codemirror/view": "^0.19.37",
     "sass": "^1.45.1",
     "vue": "^3.2.25"

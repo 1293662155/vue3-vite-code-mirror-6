@@ -54,7 +54,7 @@ const globalJavaScriptCompletions = javascriptLanguage.data.of({
   autocomplete: completeFromGlobalScope
 })
 
-const { setDoc, getDoc } = useCodemirror(parentRef, {
+const { doc } = useCodemirror(parentRef, {
   doc: props.modelValue,
   extensions: [
     basicSetup,
@@ -63,14 +63,16 @@ const { setDoc, getDoc } = useCodemirror(parentRef, {
     globalJavaScriptCompletions,
     autocompletion()
   ]
-}, newValue => {
-  emit('update:modelValue', newValue)
 })
 
+
 watch(() => props.modelValue, (nv) => {
-  if (nv !== getDoc()) {
-    console.log('外面修改了')
-    setDoc(nv)
+  doc.value = nv;
+})
+
+watch(() => doc.value, (nv) => {
+  if (props.modelValue !== nv) {
+    emit('update:modelValue', nv)
   }
 })
 
